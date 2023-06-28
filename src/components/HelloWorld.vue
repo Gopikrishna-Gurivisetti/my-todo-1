@@ -1,12 +1,12 @@
 <template>
   <form @submit.prevent="addTodo">
     <input v-model="newTodo">
-    <button>Add Todo</button>
+    <button class="bg-red-300">Add Todo</button>
   </form>
   <ul>
     <li v-for="todo in todos" :key="todo">
       <span class="todo-item">{{ todo.text }}</span>
-      <button @click="editTodo(todo)">edit</button>
+      <button  @click="editTodo(todo)">edit</button>
       <button @click="updateTodo(todo)">update</button>
       <button @click="removeTodo(todo)">X</button>
     </li>
@@ -54,12 +54,12 @@ input{
   padding-left: 8px;
   border-radius: 5px;
 }
-button{
+/* button{
   padding-inline: 20px;
   padding-block: 5px;
   color:white;
   background-color: rgb(62, 62, 134);
   border-radius: 5px;
   margin: 5px 10px;
-}
+} */
 </style>
