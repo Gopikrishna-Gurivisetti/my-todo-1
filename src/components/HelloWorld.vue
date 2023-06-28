@@ -24,14 +24,18 @@ const newTodo = ref('')
 const todos = ref([])
 
 function addTodo() {
-  todos.value.push({ text: newTodo.value})
-  newTodo.value = ''
+  if(newTodo.value.trim()!==''){
+    todos.value.push({ text: newTodo.value})
+    newTodo.value = ''
+  }
+ 
 }
 function editTodo(todo){
   newTodo.value=todo.text
 }
 function updateTodo(todo){
-  todo.text=newTodo.value
+  todo.text=newTodo.value;
+  newTodo.value = '';
 }
 
 function removeTodo(todo) {
@@ -54,7 +58,7 @@ button{
   padding-inline: 20px;
   padding-block: 5px;
   color:white;
-  background-color: blue;
+  background-color: rgb(62, 62, 134);
   border-radius: 5px;
   margin: 5px 10px;
 }
