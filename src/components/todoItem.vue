@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="mt-5">
 <li v-for="todo in props.todos" :key="todo">
-    <span>{{ todo.text }}</span>
+    <span class="text-lg ">{{ todo.text }}</span>
 </li>
     </div>
 </template>
