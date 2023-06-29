@@ -1,12 +1,13 @@
 <template>
     <div class="mt-32 ms-24">
-        <input class="border border-2 border-blue-400 rounded py-2 ps-3" type="text" v-model="newItem">
+        <input class="border border-2 border-blue-400 rounded py-2 ps-3" type="text" v-model="newItem"
+            placeholder="Enter user name...">
         <button class="ms-5 px-3 py-1 border border-2 border-blue-400 bg-green-300 rounded" @click="createItem">Add</button>
 
         <!-- print the data in tabular format -->
         <table>
             <th>
-                <h1 class="text-3xl mt-5 mb-5 bg-blue-500 rounded text-white">User Details in Local Storage</h1>
+                <h1 class="text-3xl mt-5 mb-5 p-2 bg-blue-500 rounded text-white">User Details in Local Storage</h1>
             </th>
             <tr v-for="(item, index) in items" :key="index">
                 <td class="py-3">
@@ -23,7 +24,7 @@
 
         <table>
             <th>
-                <h1 class="text-3xl mt-5 mb-5 bg-purple-500 rounded text-white">User Details in Session Storage</h1>
+                <h1 class="text-3xl mt-5 mb-5 p-2 bg-purple-500 rounded text-white">User Details in Session Storage</h1>
             </th>
             <tr v-for="(data, index) in sessionItem" :key="index">
                 <td class="py-3">
@@ -36,7 +37,7 @@
                         @click="deleteItem(index)">Delete</button></td> -->
             </tr>
         </table>
-        
+
 
     </div>
 </template>
@@ -46,7 +47,7 @@ import { ref } from 'vue';
 
 const items = ref([]);
 const newItem = ref('')
-const selectItem = ref(null);
+const selectItem = ref(false);
 const sessionItem = ref([]);
 
 // Read the array from local storage when the component is mounted
@@ -92,14 +93,14 @@ const updateLocalStorage = () => {
 }
 
 function checkedItem(index) {
-       let waitItem = items.value.splice(index, 1);
-       waitItem.forEach(item=>{
+    let waitItem = items.value.splice(index, 1);
+    waitItem.forEach(item => {
         sessionItem.value.push(item);
-       })
-       
-       console.log(waitItem);
-        updateLocalStorage();
-        sessionStorage.setItem('mysessionKey', JSON.stringify(sessionItem.value));
+    })
+
+    console.log(waitItem);
+    updateLocalStorage();
+    sessionStorage.setItem('mysessionKey', JSON.stringify(sessionItem.value));
 }
 
 
