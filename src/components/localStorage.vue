@@ -43,13 +43,16 @@
 </template>
   
 <script setup>
-import { ref } from 'vue';
+import { ref,onBeforeMount } from 'vue';
 
 const items = ref([]);
 const newItem = ref('')
 const selectItem = ref(false);
 const sessionItem = ref([]);
 
+onBeforeMount(() => {
+    clearSessionStorage();
+})
 // Read the array from local storage when the component is mounted
 const arrayString = localStorage.getItem('myArrayKey');
 items.value = JSON.parse(arrayString) || [];
@@ -57,7 +60,9 @@ items.value = JSON.parse(arrayString) || [];
 const sessionString = sessionStorage.getItem('mysessionKey');
 sessionItem.value = JSON.parse(sessionString) || [];
 
-
+function beforeUnmount() {
+    sessionStorage.clear(); // Clear session storage before component unmounts
+  }
 function createItem() {
     // Create - Add a new item to the array
     if (newItem.value.trim() !== "") {
@@ -103,6 +108,9 @@ function checkedItem(index) {
     sessionStorage.setItem('mysessionKey', JSON.stringify(sessionItem.value));
 }
 
-
+function clearSessionStorage() {
+      sessionStorage.clear();
+      sessionItem.value=[]; // Clear session storage before page unload
+    }
 </script>
   

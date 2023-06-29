@@ -1,10 +1,10 @@
 <template>
   <div class="ms-24 mt-24">
   <form @submit.prevent="addTodo">
-    <input class="border border-2 border-red-400 rounded py-2 ps-3" v-model="newTodo">
+    <input class="border border-2 border-red-400 rounded py-2 ps-3" placeholder="Enter user name" v-model="newTodo">
     <button class="ms-5 px-3 py-1 border border-2 border-blue-400 bg-green-300 rounded">Add Todo</button>
   </form>
-  
+
   <table>
     <th>
       <h1 class="text-3xl mt-5 mb-5 p-2 bg-purple-500 rounded text-white">Todo List</h1>

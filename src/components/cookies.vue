@@ -46,6 +46,7 @@
 
   <template>
     <div class="mt-10 ms-24">
+
       <table>
         <th>
           <h1 class="text-3xl mt-5 mb-5 p-2 bg-orange-500 rounded text-white">Cookies</h1>
@@ -61,6 +62,7 @@
   </template>
   
   <script setup>
+ 
   
    
      function setCookie() {
@@ -68,7 +70,7 @@
         const cookieValue = 'Hello Cookies!!';
         const expiryDays = 1;
         const date = new Date();
-        date.setTime(date.getTime() + expiryDays * 1 * 1 * 4 * 1000);
+        date.setTime(date.getTime() + expiryDays * 1 * 1 * 6 * 1000);
         const expires = `expires=${date.toUTCString()}`;
   
         document.cookie = `${cookieName}=${cookieValue};${expires};path=/`;
